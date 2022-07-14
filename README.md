@@ -12,3 +12,11 @@ Developmental STP simulation files.
 * Brian Simulation version 1.4.1
 * Numpy
 * Scipy
+
+## Running the simulation
+
+* After installation of the required libraries, simply type
+```
+python run.py
+```
+Make sure you are using Python 2.
