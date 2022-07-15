@@ -12,6 +12,7 @@ Developmental STP simulation files.
 * Brian Simulation version 1.4.1
 * Numpy
 * Scipy
+* matplotlib
 
 ## Running the simulation
 
@@ -19,4 +20,4 @@ Developmental STP simulation files.
 ```
 python run.py
 ```
-Make sure you are using Python 2.
+* Make sure you are using Python 2.

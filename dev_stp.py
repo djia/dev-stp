@@ -103,7 +103,6 @@ def simulate_dev_stp(sim_time=1.0 * second, n_ex_sender_neurons_per_channel=100,
 
 	eqs_general_ex = '''
 	w : 1
-	w_esp : 1
 	w_stp : 1
 	'''
 
@@ -371,7 +370,7 @@ def simulate_dev_stp(sim_time=1.0 * second, n_ex_sender_neurons_per_channel=100,
 		con_er = globals()["con_er" + str(i_channel)]
 		con_ir = globals()["con_ir" + str(i_channel)]
 
-		globals()["ex_synapses_monitor" + str(i_channel)] = StateMonitor(con_er, ["w", "w_esp"], record = True, dt = monitor_dt * second)
+		globals()["ex_synapses_monitor" + str(i_channel)] = StateMonitor(con_er, ["w"], record = True, dt = monitor_dt * second)
 		ex_synapses_monitor = globals()["ex_synapses_monitor" + str(i_channel)]
 		ex_synapses_monitor_by_channel[i_channel] = ex_synapses_monitor
 		net.add(globals()["ex_synapses_monitor" + str(i_channel)])
@@ -534,15 +533,6 @@ def simulate_dev_stp(sim_time=1.0 * second, n_ex_sender_neurons_per_channel=100,
 
 	# extract the ex synaptic weights
 	ex_weights_by_channel_mat = {}
-	w_esps_by_channel_mat = {}
-	for i_channel in xrange(1, n_channels + 1):
-		weights = []
-		w_esps = []
-		for i in xrange(n_ex_sender_neurons_per_channel):
-			weights.append(ex_synapses_monitor_by_channel[i_channel][i].w.tolist())
-			w_esps.append(ex_synapses_monitor_by_channel[i_channel][i].w_esp.tolist())
-		ex_weights_by_channel_mat[i_channel] = weights
-		w_esps_by_channel_mat[i_channel] = w_esps
 	
 	# the presynaptic rate by channel
 	if save_ex_rates_by_channel:
@@ -562,7 +552,6 @@ def simulate_dev_stp(sim_time=1.0 * second, n_ex_sender_neurons_per_channel=100,
 		"in_weights_by_channel": in_weights_by_channel_mat,
 		"w_isps_by_channel": w_isps_by_channel_mat,
 		"ex_weights_by_channel": ex_weights_by_channel_mat,
-		"w_esps_by_channel": w_esps_by_channel_mat,
 	})
 
 	if save_ex_rates_by_channel:
