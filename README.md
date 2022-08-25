@@ -6,10 +6,10 @@ Developmental STP simulation files.
 
 ## Installation requirements
 
-* Python 2
+* Python version 2.7
 * NeuroTools
-* [superjson](https://pypi.org/project/superjson/)
-* Brian Simulation version 1.4.1
+* [superjson](https://pypi.org/project/superjson/) version 0.0.10
+* Brian Simulation version 2
 * Numpy
 * Scipy
 * matplotlib
@@ -21,3 +21,7 @@ Developmental STP simulation files.
 python run.py
 ```
 * Make sure you are using Python 2.
+
+Note: the first time you run the model it takes some extra time to setup the system before you see some output.
+
+Note2: due to computational constraints of standard personal computers, the code is initialized to run the dev-STP model for only 100s of simulated time. The effects of the dev-STP model can already be observed during this time.
